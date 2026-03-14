@@ -36,6 +36,10 @@
 1. Скачайте `UniversalLauncher.exe` в разделе [Releases](https://github.com/pggnever/UniversalLauncher/releases).
 2. Запускайте от имени администратора.
 
+
+
+VT : https://www.virustotal.com/gui/file/47cdd607e97a5566a3a698ab6a4f38a4c623b8121a5730b3273513916897a656/detection
+Note: Some antiviruses might show false positives (6/72) because the app is packed with PyInstaller and interacts with processes. The project is fully Open Source, so you can check the code yourself.
 ---
 
 ## 🤝 License / Лицензия
