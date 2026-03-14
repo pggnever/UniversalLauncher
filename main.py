@@ -14,8 +14,6 @@ import sys
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
-CONFIG_FILE = "config.json"
-
 # --- СЛОВАРЬ ПЕРЕВОДОВ ---
 LANGUAGES = {
     "RU": {
@@ -66,6 +64,14 @@ class UniversalLauncher(ctk.CTk):
     def __init__(self):
         super().__init__()
 
+        # --- НАСТРОЙКИ ПУТЕЙ (AppData) ---
+        self.app_data_path = os.path.join(os.environ['APPDATA'], 'UniversalLauncher')
+        if not os.path.exists(self.app_data_path):
+            os.makedirs(self.app_data_path)
+        # Теперь конфиг всегда будет храниться в системной папке
+        self.config_file = os.path.join(self.app_data_path, 'config.json')
+        # ---------------------------------
+
         self.title("Universal Launcher")
         self.geometry("650x550")
         self.minsize(550, 450)
@@ -110,7 +116,7 @@ class UniversalLauncher(ctk.CTk):
         self.current_lang = choice
         self.save_config()
         self.update_main_ui_texts()
-        self.render_profiles() # Перерисовываем карточки профилей
+        self.render_profiles()
 
     def update_main_ui_texts(self):
         self.label.configure(text=self._t("main_title"))
@@ -146,12 +152,26 @@ class UniversalLauncher(ctk.CTk):
         except Exception:
             pass
 
-    def create_image(self):
-        image = Image.new('RGB', (64, 64), color=(30, 30, 30))
-        dc = ImageDraw.Draw(image)
-        dc.rectangle((16, 16, 48, 48), fill=(29, 107, 201))
-        return image
+    def resource_path(self, relative_path):
+        """ Получаем путь к ресурсам внутри собранного .exe """
+        try:
+            # PyInstaller создает временную папку _MEIPASS при запуске
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
 
+    def create_image(self):
+        """ Загружаем нашу иконку для трея """
+        icon_path = self.resource_path("app_icon.ico")
+        if os.path.exists(icon_path):
+            return Image.open(icon_path)
+        else:
+            # Заглушка, если файл чудом не найдется (тот самый синий квадрат)
+            image = Image.new('RGB', (64, 64), color=(30, 30, 30))
+            dc = ImageDraw.Draw(image)
+            dc.rectangle((16, 16, 48, 48), fill=(29, 107, 201))
+            return image
     def hide_window(self):
         self.withdraw()
         menu = pystray.Menu(
@@ -222,11 +242,10 @@ class UniversalLauncher(ctk.CTk):
                 time.sleep(delay)
 
     def load_config(self):
-        if os.path.exists(CONFIG_FILE):
-            with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+        if os.path.exists(self.config_file):
+            with open(self.config_file, "r", encoding="utf-8") as f:
                 try: 
                     data = json.load(f)
-                    # Миграция со старого формата (если нет ключа profiles)
                     if "profiles" not in data:
                         return {"language": "RU", "profiles": data}
                     return data
@@ -238,7 +257,7 @@ class UniversalLauncher(ctk.CTk):
             "language": self.current_lang,
             "profiles": self.profiles
         }
-        with open(CONFIG_FILE, "w", encoding="utf-8") as f:
+        with open(self.config_file, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
     def render_profiles(self):
@@ -428,4 +447,3 @@ class UniversalLauncher(ctk.CTk):
 if __name__ == "__main__":
     app = UniversalLauncher()
     app.mainloop()
-    
