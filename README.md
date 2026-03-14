@@ -16,7 +16,7 @@
 - **🥷 Tray Mode**: Runs quietly in the system tray.
 
 ### 📦 Installation
-1. Download `UniversalLauncher.exe` from the [Releases](https://github.com/твой_ник/UniversalLauncher/releases) section.
+1. Download `UniversalLauncher.exe` from the [Releases](https://github.com/pggnever/UniversalLauncher/releases) section.
 2. Run as Administrator.
 
 ---
