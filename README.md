@@ -42,10 +42,13 @@
 
 ### 🛡️ Security
 [![VirusTotal](https://img.shields.io/badge/VirusTotal-Scan_Report-blue?style=for-the-badge&logo=virustotal)](https://www.virustotal.com/gui/file/7ff20d98fb64c6d8550284bb15d01fd127c1b703727dd733d2be683e6b21dc97?nocache=1)
-**Note:** Some antiviruses might show false positives (4/72) because the app is packed with PyInstaller. Being Open Source, you are welcome to audit the code yourself.
----
+> [!IMPORTANT]
 
-## 🤝 License / Лицензия
+> **False Positives (4/72):** Some engines flag the app because it is packed with **PyInstaller** and interacts with game processes. This is a common issue for Python-based gaming tools. 
+
+> 
+
+> The project is **fully Open Source**, so you can audit every line of code or build it from source yourself.
 This project is licensed under the **GNU GPLv3**. / Проект распространяется под лицензией **GNU GPLv3**.
 
 *Developed in 2026.*
