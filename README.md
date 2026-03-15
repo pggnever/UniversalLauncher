@@ -33,10 +33,7 @@
 - **🥷 Трей-режим**: Работает в фоне и не мешает игре.
 
 
-<video width="100%" controls>
-  <source src="https://github.com/pggnever/UniversalLauncher/raw/main/project.mp4" type="video/mp4">
-</video>
-
+<video src="project.mp4" width="100%" controls></video>
 
 ### 📦 Установка
 1. Скачайте `UniversalLauncher.exe` в разделе [Releases](https://github.com/pggnever/UniversalLauncher/releases).
