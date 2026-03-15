@@ -36,7 +36,7 @@
 1. Скачайте `UniversalLauncher.exe` в разделе [Releases](https://github.com/pggnever/UniversalLauncher/releases).
 2. Запускайте от имени администратора.
 
-https://github.com/pggnever/UniversalLauncher/blob/main/Video Project.mp4
+https://github.com/pggnever/UniversalLauncher/blob/main/Video_Project.mp4
 
 VirusTotal scan: https://www.virustotal.com/gui/file/7ff20d98fb64c6d8550284bb15d01fd127c1b703727dd733d2be683e6b21dc97?nocache=1
 Note: Some antiviruses might show false positives (4/72) because the app is packed with PyInstaller and interacts with processes. The project is fully Open Source, so you can check the code yourself.
