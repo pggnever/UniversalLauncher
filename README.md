@@ -2,6 +2,8 @@
 
 [English](#english) | [Русский](#русский)
 
+![Downloads](https://img.shields.io/github/downloads/pggnever/UniversalLauncher/total?style=for-the-badge&color=blue)
+
 ---
 
 ## English
