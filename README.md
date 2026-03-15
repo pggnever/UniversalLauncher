@@ -31,7 +31,13 @@
 - **🧹 Авто-закрытие**: Закрывает второстепенные программы после выхода из игры.
 - **🌍 Мультиязычность**: Интерфейс на RU и EN.
 - **🥷 Трей-режим**: Работает в фоне и не мешает игре.
-https://github.com/pggnever/UniversalLauncher/raw/main/project.mp4
+
+
+<video width="100%" controls>
+  <source src="https://github.com/pggnever/UniversalLauncher/raw/main/project.mp4" type="video/mp4">
+</video>
+
+
 ### 📦 Установка
 1. Скачайте `UniversalLauncher.exe` в разделе [Releases](https://github.com/pggnever/UniversalLauncher/releases).
 2. Запускайте от имени администратора.
